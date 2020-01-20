@@ -287,18 +287,23 @@ static int price;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
-                .addComponent(btnfirst)
-                .addGap(46, 46, 46)
-                .addComponent(btnprevious)
-                .addGap(69, 69, 69)
-                .addComponent(btnnext)
-                .addGap(51, 51, 51)
-                .addComponent(btnlast)
-                .addContainerGap(348, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblnumber)
+                .addGap(29, 29, 29)
+                .addComponent(txtnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(btnfirst)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnprevious)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnnext)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnlast))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -319,7 +324,9 @@ static int price;
                                                     .addComponent(lblprice)
                                                     .addComponent(lblindex))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtindex, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(115, 115, 115)
                                 .addComponent(lblexclusive)))
@@ -338,16 +345,9 @@ static int price;
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtnummaintenances, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtindex, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(101, 101, 101)
-                        .addComponent(lblnumber)
-                        .addGap(29, 29, 29)
-                        .addComponent(txtnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(102, 102, 102))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtnummaintenances, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,17 +384,17 @@ static int price;
                     .addComponent(btnlast))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblprice, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnummaintenances, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                    .addComponent(txtnummaintenances, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblprice, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblnumber)
                     .addComponent(txtindex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblindex))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
@@ -457,8 +457,8 @@ static int price;
      numprod++;
      txtnumber.setText(""+numprod);
      txtindex.setText(""+index);
-     //jMIlock.setEnabled(false);
-    // jMInoiron.setEnabled(true);
+     jMIlock.setEnabled(false);
+    jMInoiron.setEnabled(true);
     // jMIlining.setEnabled(true);
     // jMIdecorations.setEnabled(true);
     // jMImaintenance.setEnabled(true);
@@ -491,10 +491,11 @@ static int price;
      index=locinsert;
      numprod++;
      txtnumber.setText(""+numprod);
-     txtindex.setText(""+index);
-     
+     txtindex.setText(""+index);}
+     jMIlock.setEnabled(true);
+    jMInoiron.setEnabled(false);
     }//GEN-LAST:event_jMInewbagActionPerformed
-    }
+    
     private void jMIliningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIliningActionPerformed
       stuff.get(index).addlinen(); 
       txtcomfort.setText(""+stuff.get(index).getComfort());
@@ -538,8 +539,14 @@ static int price;
      txtwork.setText(""+stuff.get(index).getWorktime());
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
      if (stuff.get(index) instanceof Bag){
-     lblexclusive.setText("safety of closure");}
-     else{lblexclusive.setText("easiness to iron");}
+     lblexclusive.setText("safety of closure");
+     jMIlock.setEnabled(true);
+     jMInoiron.setEnabled(false);
+     }
+     else{lblexclusive.setText("easiness to iron");
+     jMIlock.setEnabled(false);
+     jMInoiron.setEnabled(true);
+     }
      txtexclusive.setText(""+stuff.get(index).getworth());
      //txtexclusive.setText(""+stuff.get(index).getworth());
     price=200+stuff.get(index).sumworth();
@@ -559,8 +566,14 @@ static int price;
      txtwork.setText(""+stuff.get(index).getWorktime());
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
     if (stuff.get(index) instanceof Bag){
-     lblexclusive.setText("safety of closure");}
-     else{lblexclusive.setText("easiness to iron");}
+     lblexclusive.setText("safety of closure");
+     jMIlock.setEnabled(true);
+     jMInoiron.setEnabled(false);
+    }
+     else{lblexclusive.setText("easiness to iron");
+    jMIlock.setEnabled(false);
+     jMInoiron.setEnabled(true);
+    }
       txtexclusive.setText(""+stuff.get(index).getworth());
     // txtexclusive.setText(""+p.getSafetoclose());
     price=200+stuff.get(index).sumworth();
@@ -580,8 +593,14 @@ static int price;
      txtwork.setText(""+stuff.get(index).getWorktime());
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
      if (stuff.get(index) instanceof Bag){
-     lblexclusive.setText("safety of closure");}
-     else{lblexclusive.setText("easiness to iron");}
+     lblexclusive.setText("safety of closure");
+     jMIlock.setEnabled(true);
+     jMInoiron.setEnabled(false);
+     }
+     else{lblexclusive.setText("easiness to iron");
+     jMIlock.setEnabled(false);
+     jMInoiron.setEnabled(true);
+     }
       txtexclusive.setText(""+stuff.get(index).getworth());
    price=200+stuff.get(index).sumworth();
     txtprice.setText(""+price);
@@ -601,8 +620,14 @@ static int price;
      txtwork.setText(""+stuff.get(index).getWorktime());
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
     if (stuff.get(index) instanceof Bag){
-     lblexclusive.setText("safety of closure");}
-     else{lblexclusive.setText("easiness to iron");}
+     lblexclusive.setText("safety of closure");
+    jMIlock.setEnabled(true);
+     jMInoiron.setEnabled(false);
+    }
+     else{lblexclusive.setText("easiness to iron");
+    jMIlock.setEnabled(false);
+     jMInoiron.setEnabled(true);
+    }
       txtexclusive.setText(""+stuff.get(index).getworth());
     price=200+stuff.get(index).sumworth();
     txtprice.setText(""+price);
@@ -624,8 +649,14 @@ static int price;
      txtwork.setText(""+stuff.get(index).getWorktime());
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
      if (stuff.get(index) instanceof Bag){
-     lblexclusive.setText("safety of closure");}
-     else{lblexclusive.setText("easiness to iron");}
+     lblexclusive.setText("safety of closure");
+     jMIlock.setEnabled(true);
+     jMInoiron.setEnabled(false);
+     }
+     else{lblexclusive.setText("easiness to iron");
+     jMIlock.setEnabled(false);
+     jMInoiron.setEnabled(true);
+     }
       txtexclusive.setText(""+stuff.get(index).getworth());
     price=200+stuff.get(index).sumworth();
     txtprice.setText(""+price);
@@ -642,8 +673,14 @@ static int price;
      txtwork.setText(""+stuff.get(index).getWorktime());
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
      if (stuff.get(index) instanceof Bag){
-     lblexclusive.setText("safety of closure");}
-     else{lblexclusive.setText("easiness to iron");}
+     lblexclusive.setText("safety of closure");
+     jMIlock.setEnabled(true);
+     jMInoiron.setEnabled(false);
+     }
+     else{lblexclusive.setText("easiness to iron");
+     jMIlock.setEnabled(false);
+     jMInoiron.setEnabled(true);
+     }
       txtexclusive.setText(""+stuff.get(index).getworth());
     price=200+stuff.get(index).sumworth();
     txtprice.setText(""+price);
