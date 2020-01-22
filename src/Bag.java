@@ -1,6 +1,6 @@
 
-public class Bag extends Product{
-    protected int safetoclose=0;
+public class Bag extends Product{ //second child
+    protected int safetoclose=0;  //variable exclusive to this child 
     public Bag(String n){
         super(n+" bag");
     }
@@ -14,17 +14,20 @@ public class Bag extends Product{
      return safetoclose;
  }
     @Override
-    public void discountmaintenance(){
+    public void discountmaintenance(){//overrides abstract method in parent
+                                  //adds coupon for maintenance service
     safetoclose=safetoclose+20; 
     numberofmaintenances++;
     }
     
-    public void addfeatures(){// add safety
+    public void addfeatures(){// add safety closure for bag
+                              //extends method in parent
         super.addfeatures();
         safetoclose= safetoclose+30;
     }
     @Override
-    public int sumworth(){
+    public int sumworth(){//overrides method in parent
+                            //calculate total worth of product
     return (fashion+comfort+worktime+materialcosts+safetoclose);
 }
      @Override

@@ -1,6 +1,7 @@
 
-public  class Dress extends Product{
- protected int easytoiron=0;
+public  class Dress extends Product{  //first child
+ protected int easytoiron=0; //variable exclusive to this child
+ //two constructors:
  public Dress (String n){
      super(n + " dress");
      
@@ -15,24 +16,24 @@ public  class Dress extends Product{
      return easytoiron;
  }
  @Override //riscrivo abstract method
- public void discountmaintenance(){
+ public void discountmaintenance(){ //overrides abstract method in parent
+                                    //adds coupon for maintenance service
  easytoiron=easytoiron+20;
  numberofmaintenances++;
 }
- public void addfeatures(){
+ public void addfeatures(){//extends method in parent
+                            //uses no-iron tissue for dress
     super.addfeatures();
     easytoiron=easytoiron+50;
 }
  @Override
-  public int sumworth(){
+  public int sumworth(){//overrides method in parent
+                        //calculate total worth of product
      return (fashion+comfort+worktime+materialcosts+easytoiron);
  }
-//public int getvalue(){
-//    value=value+easytoiron;
-  //  return value;
-//}
+
         @Override
-        public int getworth(){
+        public int getworth(){//overrides method in parent
             return easytoiron;
         }
         

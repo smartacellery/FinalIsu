@@ -1,20 +1,18 @@
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
-//import java.util.ListIterator;
 import javax.swing.DefaultListModel;
 
 public class Taylor extends javax.swing.JFrame {
-ArrayList<Product> stuff=new ArrayList();
+ArrayList<Product> stuff=new ArrayList();//list of products (dresses and bags together)
 DefaultListModel list = new DefaultListModel();
 Product p;
-static int index;
-static int numprod;
-static int price;
+static int index; //position of current product in the list
+static int numprod;//total number of products in the list
+static int price; //price of current product
     public Taylor() {
         initComponents();
-     price=200;
+     price=200;//base price of each product, before customisations
      p=new Dress("");
      stuff.add(p);
      list.addElement(p.getName());
@@ -23,6 +21,7 @@ static int price;
      
       
     }
+    //find the position where to add a new product, alfabethically ordered by model name:
    public static int findInsertPoint(ArrayList a, Object searchValue) {
         int left = 0;
         int right = a.size() - 1;
@@ -43,6 +42,7 @@ static int price;
        }
         return midp;
     }
+   //search name of model (used when I add new model, to see if it is already present in the list)
      public static int search(ArrayList a, Object searchValue) {
         int left = 0;
         int right = a.size()-1;
@@ -62,7 +62,7 @@ static int price;
     }
     
     
-    public final void computetotalprice(){
+    public final void computetotalprice(){//increase price when adding customisations
         price=price+p.sumworth();
         
     }
@@ -133,54 +133,31 @@ static int price;
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
             }
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
         });
 
-        lblname.setText("                               Model Name->");
-        lblname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblname.setText("model name");
 
-        lblfashion.setText("                            Fashion Level->");
-        lblfashion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblfashion.setText("fashion level");
 
-        lblcomfort.setText("                           Comfort Level->");
-        lblcomfort.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblcomfort.setText("comfort level");
 
-        lblwork.setText("                            Working Time->");
-        lblwork.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblwork.setText("working time");
 
-        lblmatcosts.setText("                      Cost Of Materials->");
-        lblmatcosts.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblmatcosts.setText("cost of materials");
 
-        txtname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        txtfashion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        txtcomfort.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        txtwork.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtworkActionPerformed(evt);
             }
         });
 
-        txtmatcosts.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblprice.setText("selling price ");
 
-        txtexclusive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblnumber.setText("total number of products");
 
-        txtprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtprice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpriceActionPerformed(evt);
-            }
-        });
-
-        lblprice.setText("                              Selling Price->");
-        lblprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        lblnumber.setText("       Total Number Of Products->");
-        lblnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        txtnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtnumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnumberActionPerformed(evt);
@@ -188,7 +165,6 @@ static int price;
         });
 
         btnfirst.setText("<|");
-        btnfirst.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnfirst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnfirstActionPerformed(evt);
@@ -196,7 +172,6 @@ static int price;
         });
 
         btnprevious.setText("<");
-        btnprevious.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnprevious.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnpreviousActionPerformed(evt);
@@ -204,35 +179,26 @@ static int price;
         });
 
         btnnext.setText(">");
-        btnnext.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnnext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnnextActionPerformed(evt);
             }
         });
 
-        btnlast.setText(">|");
-        btnlast.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnlast.setText("|>");
         btnlast.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlastActionPerformed(evt);
             }
         });
 
-        lblindex.setText("                          Current Index->");
-        lblindex.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblindex.setText("current index");
 
-        txtindex.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel1.setText("n. maintenance coupons");
 
-        txtnummaintenances.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jLabel1.setText("     #  Of  Maintenance Cupons->");
-        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu1.setText("New     ");
 
-        jMInewdress.setText("New Dress");
+        jMInewdress.setText("new dress");
         jMInewdress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMInewdressActionPerformed(evt);
@@ -240,7 +206,7 @@ static int price;
         });
         jMenu1.add(jMInewdress);
 
-        jMInewbag.setText("New Bag");
+        jMInewbag.setText("new bag");
         jMInewbag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMInewbagActionPerformed(evt);
@@ -250,10 +216,9 @@ static int price;
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu2.setText("Customise    ");
 
-        jMIlining.setText("Add Lining");
+        jMIlining.setText("add lining");
         jMIlining.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIliningActionPerformed(evt);
@@ -261,7 +226,7 @@ static int price;
         });
         jMenu2.add(jMIlining);
 
-        jMIdecorations.setText("Add Decorations");
+        jMIdecorations.setText("add decorations");
         jMIdecorations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIdecorationsActionPerformed(evt);
@@ -269,7 +234,7 @@ static int price;
         });
         jMenu2.add(jMIdecorations);
 
-        jMIlock.setText("Add Safety Lock For Bag");
+        jMIlock.setText("add safety lock for bag");
         jMIlock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIlockActionPerformed(evt);
@@ -277,7 +242,7 @@ static int price;
         });
         jMenu2.add(jMIlock);
 
-        jMInoiron.setText("Add Noniron Tissue For Dress");
+        jMInoiron.setText("add noiron tissue for dress");
         jMInoiron.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMInoironActionPerformed(evt);
@@ -285,7 +250,7 @@ static int price;
         });
         jMenu2.add(jMInoiron);
 
-        jMImaintenance.setText("Add Maintenance Coupons ");
+        jMImaintenance.setText("add maintenance coupons ");
         jMImaintenance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMImaintenanceActionPerformed(evt);
@@ -295,10 +260,9 @@ static int price;
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu3.setText("Sell     ");
 
-        jMISell.setText("Sell Current Item");
+        jMISell.setText("Sell current item");
         jMISell.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMISellActionPerformed(evt);
@@ -308,10 +272,9 @@ static int price;
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu4.setText("Exit");
 
-        jMIexit.setText("Exit Program");
+        jMIexit.setText("Exit program");
         jMIexit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMIexitActionPerformed(evt);
@@ -327,109 +290,121 @@ static int price;
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblnumber)
+                .addGap(29, 29, 29)
+                .addComponent(txtnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(190, 190, 190)
-                            .addComponent(btnprevious, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnfirst, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblmatcosts, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblwork, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblcomfort, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblfashion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblprice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(lblindex, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addComponent(lblnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblexclusive)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(180, 180, 180)
+                        .addComponent(btnfirst)
+                        .addGap(46, 46, 46)
+                        .addComponent(btnprevious)
+                        .addGap(69, 69, 69)
+                        .addComponent(btnnext)
+                        .addGap(51, 51, 51)
+                        .addComponent(btnlast))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(126, 126, 126)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblprice)
+                                    .addComponent(lblindex))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtindex, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblexclusive, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(lblfashion)
+                                                .addComponent(lblname)
+                                                .addComponent(lblcomfort))
+                                            .addGap(19, 19, 19)))
+                                    .addComponent(lblwork, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblmatcosts))))
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtexclusive, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(txtmatcosts, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtwork, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtcomfort, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtfashion)
-                            .addComponent(txtname)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(btnnext, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                            .addComponent(btnlast, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtnumber, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtindex, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtnummaintenances, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtprice, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addGap(128, 128, 128))
+                        .addComponent(txtnummaintenances, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(319, 319, 319)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtwork, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtmatcosts, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
+                            .addComponent(txtexclusive, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtname, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtfashion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                .addComponent(txtcomfort, javax.swing.GroupLayout.Alignment.LEADING)))))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblname)
+                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblfashion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtfashion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblfashion)
+                    .addComponent(txtfashion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblcomfort, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcomfort, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblcomfort)
+                    .addComponent(txtcomfort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblwork, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtwork, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtwork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblwork))
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblmatcosts, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtmatcosts, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(txtexclusive, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                    .addComponent(txtmatcosts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblmatcosts))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(lblexclusive))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(txtexclusive, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnlast, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnnext, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnprevious, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnfirst, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblprice, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(txtprice))
-                .addGap(18, 18, 18)
+                    .addComponent(btnfirst)
+                    .addComponent(btnprevious)
+                    .addComponent(btnnext)
+                    .addComponent(btnlast))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnummaintenances, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(txtprice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnummaintenances, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblprice, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblindex, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtindex, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addComponent(lblexclusive)
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(txtnumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblnumber)
+                    .addComponent(txtindex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblindex))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMInoironActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMInoironActionPerformed
-     stuff.get(index).addfeatures(); 
+     stuff.get(index).addfeatures(); //when I use no-iron tissue, I increase costs of materials 
+                                     //and the property of being easy to iron.
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
      txtexclusive.setText(""+stuff.get(index).getEasytoiron());
      price=200+2*stuff.get(index).sumworth();
@@ -439,7 +414,9 @@ static int price;
     }//GEN-LAST:event_jMInoironActionPerformed
 
     private void jMImaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMImaintenanceActionPerformed
-        stuff.get(index).discountmaintenance();
+        stuff.get(index).discountmaintenance();    //when I add coupons for maintenance I increase
+                                                   //property of being easytoiron for a dress or 
+                                                   //being safe to lock for a bag
         if (stuff.get(index) instanceof Dress)
         {txtexclusive.setText(""+stuff.get(index).getEasytoiron());}
         else{txtexclusive.setText(""+stuff.get(index).getSafetoclose());}
@@ -451,18 +428,18 @@ static int price;
     }//GEN-LAST:event_jMImaintenanceActionPerformed
 
     private void jMIexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIexitActionPerformed
-      System.exit(0);
+      System.exit(0);//I exit from program
     }//GEN-LAST:event_jMIexitActionPerformed
 
     private void jMInewdressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMInewdressActionPerformed
-      
+      //I add a new dress to the list
       String m=JOptionPane.showInputDialog(this, "Enter dress model");
       
        Product temp =new Dress(m);
        int alreadyinlist= search(stuff,temp );
         if (alreadyinlist >=0)
             
-           {JOptionPane.showMessageDialog(this,"Bag model is already in the list!");
+           {JOptionPane.showMessageDialog(this,"bag model is already in the list!");
            clearmenu();
            return; }
            else {
@@ -476,23 +453,22 @@ static int price;
      txtcomfort.setText(""+temp.getComfort());
      txtwork.setText(""+temp.getWorktime());
      txtmatcosts.setText(""+temp.getMaterialcosts());
-     lblexclusive.setText("Easiness To Iron");
+     lblexclusive.setText("easiness to iron");
      
      txtexclusive.setText(""+temp.getEasytoiron());
-     price=200;
+     price=200; //base price before customisations
      txtprice.setText(""+price);
      index=locinsert;
      numprod++;
      txtnumber.setText(""+numprod);
      txtindex.setText(""+index);
-     jMIlock.setEnabled(false);
-    jMInoiron.setEnabled(true);
-    // jMIlining.setEnabled(true);
-    // jMIdecorations.setEnabled(true);
-    // jMImaintenance.setEnabled(true);
+     jMIlock.setEnabled(false);//i cant add safe closure to dress
+    jMInoiron.setEnabled(true);//I can use no-iron tissue for dress
+    
     }//GEN-LAST:event_jMInewdressActionPerformed
     }// 
     private void jMInewbagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMInewbagActionPerformed
+       //I add a new bag to the list
        String m=JOptionPane.showInputDialog(this, "Enter bag model");
        Product temp =new Bag(m);
       int alreadyinlist= search(stuff,temp );
@@ -514,32 +490,33 @@ static int price;
      txtmatcosts.setText(""+temp.getMaterialcosts());
      lblexclusive.setText("safety of closure");
      txtexclusive.setText(""+temp.getSafetoclose());
-     price=200;
+     price=200;//base price before customisations
      txtprice.setText(""+price);
      index=locinsert;
      numprod++;
      txtnumber.setText(""+numprod);
      txtindex.setText(""+index);}
-     jMIlock.setEnabled(true);
-    jMInoiron.setEnabled(false);
+     jMIlock.setEnabled(true); //can use safety closure for bag
+    jMInoiron.setEnabled(false);//cant use no-iron tissue for bag
     }//GEN-LAST:event_jMInewbagActionPerformed
     
     private void jMIliningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIliningActionPerformed
       stuff.get(index).addlinen(); 
-      txtcomfort.setText(""+stuff.get(index).getComfort());
-      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
-     price=200+stuff.get(index).sumworth();
+      txtcomfort.setText(""+stuff.get(index).getComfort());//lining adds fashion level
+      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());//lining adds cost of materials
+     price=200+stuff.get(index).sumworth();// lining increases value of bag and consequentially its price
      txtprice.setText(""+price);
     
     }//GEN-LAST:event_jMIliningActionPerformed
 
     private void jMIdecorationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIdecorationsActionPerformed
-      stuff.get(index).addflowers();
-      txtfashion.setText(""+stuff.get(index).getFashion());
+      stuff.get(index).adddecorations();
+      txtfashion.setText(""+stuff.get(index).getFashion());//decorations increase the level of fashion,
+                                                             //the cost of materials and worktime
       txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
       txtwork.setText(""+stuff.get(index).getWorktime());
      
-     price=200+stuff.get(index).sumworth();
+     price=200+stuff.get(index).sumworth();//decorations increase worth and conseq. price
      txtprice.setText(""+price);
    
     }//GEN-LAST:event_jMIdecorationsActionPerformed
@@ -549,17 +526,17 @@ static int price;
     }//GEN-LAST:event_txtworkActionPerformed
 
     private void jMIlockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIlockActionPerformed
-      stuff.get(index).addfeatures(); 
+      stuff.get(index).addfeatures(); //lock increases safety closure and cost of materials
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
      txtexclusive.setText(""+stuff.get(index).getSafetoclose());
-    price=200+stuff.get(index).sumworth();
+    price=200+stuff.get(index).sumworth(); //lock increases worth and conseq. price
      
      txtprice.setText(""+price); 
     }//GEN-LAST:event_jMIlockActionPerformed
 
     private void btnfirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfirstActionPerformed
        clearmenu();
-        index=1;
+        index=1; //I will go to first product in the list
        
         txtname.setText(stuff.get(index).getName());     
      txtfashion.setText(""+stuff.get(index).getFashion());
@@ -586,7 +563,7 @@ static int price;
 
     private void btnlastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlastActionPerformed
        clearmenu();
-        index=numprod;
+        index=numprod; //index of last product in the list
        
         txtname.setText(stuff.get(index).getName());     
      txtfashion.setText(""+stuff.get(index).getFashion());
@@ -612,8 +589,8 @@ static int price;
     }//GEN-LAST:event_btnlastActionPerformed
 
     private void btnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnextActionPerformed
-     if (index==numprod){return;}
-     if (index<numprod)index++;  
+     if (index==numprod){return;}//already at last product
+     if (index<numprod)index++;  //I will move one place forward in the list
      
         txtname.setText(stuff.get(index).getName());     
      txtfashion.setText(""+stuff.get(index).getFashion());
@@ -639,8 +616,8 @@ static int price;
     }//GEN-LAST:event_btnnextActionPerformed
 
     private void btnpreviousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnpreviousActionPerformed
-      if (index==1){return;}
-     if (index>1)index--;  
+      if (index==1){return;}//already at first product
+     if (index>1)index--;  //i will move one product back 
      
         txtname.setText(stuff.get(index).getName());     
      txtfashion.setText(""+stuff.get(index).getFashion());
@@ -648,7 +625,7 @@ static int price;
      txtwork.setText(""+stuff.get(index).getWorktime());
      txtmatcosts.setText(""+stuff.get(index).getMaterialcosts());
     if (stuff.get(index) instanceof Bag){
-     lblexclusive.setText("safety of closure");
+        lblexclusive.setText("safety of closure");
     jMIlock.setEnabled(true);
      jMInoiron.setEnabled(false);
     }
@@ -665,7 +642,8 @@ static int price;
     }//GEN-LAST:event_btnpreviousActionPerformed
 
     private void jMISellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMISellActionPerformed
-     if (index==stuff.size()-1){
+     if (index==stuff.size()-1){          //I remove the last product and show the product before it;
+                                           //the total number of coupons I must provide does not change.
         stuff.remove(stuff.get(index));
     list.removeElementAt(index);
     numprod--;
@@ -690,7 +668,8 @@ static int price;
     txtprice.setText(""+price);
     txtnumber.setText(""+numprod);
      txtindex.setText(""+index);}
-     else {
+     else {       //I will remove product not in last position, 
+                  //and I will show the product that was after it
          stuff.remove(stuff.get(index));
     list.removeElementAt(index);
     numprod--;
@@ -728,9 +707,9 @@ static int price;
         // TODO add your handling code here:
     }//GEN-LAST:event_formComponentHidden
 
-    private void txtpriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpriceActionPerformed
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtpriceActionPerformed
+    }//GEN-LAST:event_formComponentShown
 
     
     public static void main(String args[]) {
@@ -755,6 +734,9 @@ static int price;
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Taylor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
