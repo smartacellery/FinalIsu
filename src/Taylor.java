@@ -1,3 +1,23 @@
+//An artisan produces dresses and tissue bags. The program helps him to decide at what price 
+//to sell his products.
+//Each product starts from a base selling price and the selling price increases with customisations 
+//(for example adding decoratios).
+//The value of the products is given by properties, such as fashion level and cost of materials, 
+//which can increase adding customisations,increasing the selling price.
+//parent object: Product
+//child objects: Dress, Bag
+//parent properties: name (name of model),fashion, comfort, worktime, materialscost
+//child additional properties: easytoiron (dress); safetyofclosure(bag);
+//final methods: addlining, adddecorations
+//regular method: addfeatures, which for the dress consists on using no-iron tissue, for the bag 
+//is using a safety locker .
+//abstract method: addmaintenancecoupons: adds free coupons for a maintenance company that can
+// clean and iron dresses or repair bags.
+//static variable in Product class: numberofmaintenances, that is the total number of coupons, each
+//for a free sevice of maintenance for a product.
+//static method: getNumberofmaintenances, which returns the static variable.
+
+
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

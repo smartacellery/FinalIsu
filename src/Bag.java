@@ -1,6 +1,6 @@
 
 public class Bag extends Product{ //second child
-    protected int safetoclose=0;  //variable exclusive to this child 
+    protected int safetoclose=0;  //additional property of this child 
     public Bag(String n){
         super(n+" bag");
     }

@@ -1,6 +1,6 @@
 
 public  class Dress extends Product{  //first child
- protected int easytoiron=0; //variable exclusive to this child
+ protected int easytoiron=0; //additional property of this child
  //two constructors:
  public Dress (String n){
      super(n + " dress");

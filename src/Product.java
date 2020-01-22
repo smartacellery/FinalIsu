@@ -3,7 +3,8 @@ public abstract class Product implements Comparable{
 //implements Comparable to order by product name
  protected String name;
  protected int fashion,comfort, worktime,materialcosts,value ;
- static int numberofmaintenances;//total number of coupons for free maintenance service I provide 
+ static int numberofmaintenances;//total number of coupons for free maintenance service I provide, which 
+                                  //will not change if I sell products
  //two constructors:
  public Product(String n){
      name=n;         //name of model
